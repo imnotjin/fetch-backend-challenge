@@ -1,0 +1,21 @@
+ 1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+    - Go: Excellent performance, yet simplicity. It's well-suited for building efficient web servces and APIs. Also, I wanted to try out Go as it is becoming more popular for backend development.
+    - Gin: Most popular choice for Go web framework.
+    - GORM: Simplifies database operations and provides an abstraction layer.
+    - Docker Compose: Allows for easy setup and management of the application environment, especially with environment variables when creating the two DBs.
+    - PostgreSQL: I have the most experience with PostgreSQL in terms of relational DB.
+    - Swagger: Provides clear, interactive API documentation.
+ 2. What are the advantages and disadvantages of your solution?
+    - Advantages: 
+        1. Scalability: Using a database allows the solution to handle large amounts of data and transactions efficiently. It's prepared for potential growth in user base and transaction volume.
+        2. Maintainability: The combination of Go, Gin, and GORM creates a clean, modular codebase that's easier to maintain and extend.
+        3. Documentation: Swagger integration provides clear, up-to-date API documentation, making it easier for others to understand and use the API.
+        4. Consistency and Portability: Docker Compose ensures a consistent environment across different systems, simplifying development and deployment.
+    - Disadvantages:
+        1. Potential Over-engineering: For a small-scale application or prototype, using a full database setup might be considered over-engineering. A simpler in-memory solution could suffice for initial requirements.
+        2. Setup Complexity: The use of multiple tools and technologies (Go, Docker, Docker Compose, etc.) increases the initial setup complexity compared to a more minimalist approach.
+        3. Performance Overhead: While generally performant, using an ORM and a full-fledged database could introduce some performance overhead compared to a bare-bones, in-memory solution for small-scale operations.
+ 3. What has been a favorite school/personal project thus far? What about it that challenged you?
+    - My favorite project so far has been Madison Timeline, a social networking application specifically designed for University of Wisconsin-Madison students. This project was particularly significant as it marked my first experience in building a full-stack application from the ground up.
+    For Madison Timeline, My team members and I chose to work with TypeScript and Next.js, which presented an exciting challenge as I had to learn both a new language and framework simultaneously. This tech stack choice pushed me out of my comfort zone and provided valuable learning opportunities in modern web development practices.
+    One of the most challenging aspects of the project was implementing complex features that went beyond basic functionality. For instance, I spent considerable time figuring out how to integrate a text editor capable of handling image uploads via copy and paste. This particular feature required deep diving into documentation, experimenting with various libraries, and ultimately crafting a custom solution that met our specific needs.
