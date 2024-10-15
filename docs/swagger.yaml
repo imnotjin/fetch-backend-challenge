@@ -1,0 +1,123 @@
+basePath: /
+definitions:
+  handlers.AddPointsRequest:
+    properties:
+      payer:
+        type: string
+      points:
+        type: integer
+      timestamp:
+        type: string
+    required:
+    - payer
+    - points
+    - timestamp
+    type: object
+  handlers.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  handlers.SpendPointsRequest:
+    properties:
+      points:
+        type: integer
+    required:
+    - points
+    type: object
+  handlers.SpendPointsResponse:
+    properties:
+      payer:
+        type: string
+      points:
+        type: integer
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: This is a points management API server.
+  title: Fetch Rewards API
+  version: "1.0"
+paths:
+  /add:
+    post:
+      consumes:
+      - application/json
+      description: Add points to a user's account for a specific payer
+      parameters:
+      - description: Add points request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.AddPointsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Add points to a user's account
+      tags:
+      - points
+  /balance:
+    get:
+      description: Get the current point balance for each payer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: integer
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Get user's point balance
+      tags:
+      - points
+  /spend:
+    post:
+      consumes:
+      - application/json
+      description: Spend points from user's account following the given rules
+      parameters:
+      - description: Spend points request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.SpendPointsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/handlers.SpendPointsResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Spend points from user's account
+      tags:
+      - points
+swagger: "2.0"
